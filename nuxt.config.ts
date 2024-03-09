@@ -2,15 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: "@nuxt-themes/alpine",
-  modules: ["nuxt-og-image"],
+  modules: ["nuxt-og-image", "nuxt-icon"],
   ogImage: {
-    defaults: {
-      component: "OgImage",
-    },
+    defaults: { component: "OgImage" },
+    fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700"],
   },
-  content: {
-    api: {
-      baseURL: "/api/_my_content",
-    },
+  runtimeConfig: {
+    hasNuxtIcon: true,
   },
 });
