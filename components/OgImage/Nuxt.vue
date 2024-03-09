@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-/**
+/**2
  * @credits NuxtLabs <https://nuxtlabs.com/>
  * @see https://github.com/nuxt/nuxt.com/blob/main/components/OgImage/OgImageDocs.vue
  */
