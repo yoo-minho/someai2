@@ -4,7 +4,7 @@ import presetWebFonts from "@unocss/preset-web-fonts";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["nuxt-og-image", "nuxt-icon", "@unocss/nuxt"],
+  modules: ["nuxt-og-image", "nuxt-icon", "@unocss/nuxt", "@nuxt/ui"],
   ogImage: {
     defaults: { component: "OgImage" },
     fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700"],
