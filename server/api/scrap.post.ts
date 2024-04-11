@@ -1,16 +1,34 @@
-import ogs from "open-graph-scraper"
+import ogs from "open-graph-scraper";
+import { parse } from "node-html-parser";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { url } = body;
-  const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36';
-
-  console.log({url});
+  const userAgent =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36";
   try {
-    const {error, result, html} = await ogs({url, fetchOptions: { headers: { 'user-agent': userAgent } } });
-    console.log({error, result, html});
+    const { error, result, html } = await ogs({
+      url,
+      fetchOptions: { headers: { "user-agent": userAgent } },
+    });
+    if (html) {
+      const root = parse(html);
+      console.log("xxxxx", root.querySelectorAll("img").length);
+      root.querySelectorAll("img[src]")?.forEach((image) => {
+        console.log(image.getAttribute("src"));
+      });
+    }
+
     return result;
-  } catch(e){
-  console.log('qwe', {e})
-  }   
-})
+  } catch (e: any) {
+    const { error, result } = e;
+    if (error) {
+      console.log(result);
+      if (result.error === "Page not found") {
+        setResponseStatus(event, 404);
+        return result;
+      }
+    }
+    throw e;
+  }
+});

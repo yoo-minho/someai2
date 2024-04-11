@@ -12,6 +12,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.18.0",
     "@nuxt/ui": "^2.15.0",
+    "node-fetch": "^3.3.2",
     "node-html-parser": "^6.1.12",
     "nuxt": "^3.10.3",
     "open-graph-scraper": "^6.5.0",
