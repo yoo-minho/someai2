@@ -1,10 +1,10 @@
 <template>
-  <UContainer class="max-w-600px p-0">
+  <UContainer class="max-w-400px p-0 sm:px-0 lg:px-0">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
 
-    <UNotifications class="max-w-600px p-6" />
+    <UNotifications class="max-w-400px p-6" />
   </UContainer>
 </template>
 

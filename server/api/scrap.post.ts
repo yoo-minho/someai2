@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
       url,
       fetchOptions: { headers: { "user-agent": userAgent } },
     });
+
     if (html) {
       const root = parse(html);
       console.log("xxxxx", root.querySelectorAll("img").length);
@@ -19,7 +20,39 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    return result;
+    const {
+      ogUrl,
+      ogTitle,
+      ogDescription,
+      twitterCard,
+      twitterUrl,
+      twitterTitle,
+      twitterDescription,
+      ogSiteName,
+      ogImage,
+      twitterImage,
+      favicon,
+      requestUrl,
+    } = result;
+
+    const response = {
+      url: ogUrl || twitterUrl,
+      title: ogTitle || twitterTitle,
+      desc: ogDescription || twitterDescription,
+      thumbUrl: decodeURIComponent(
+        ogImage[0].url || twitterImage[0].url
+      ).replace(
+        "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=",
+        ""
+      ),
+      twitterCard,
+      favicon,
+      domain: requestUrl.replace(/(https:\/\/|http:\/\/)/, ""),
+    };
+
+    console.log({ response });
+
+    return response;
   } catch (e: any) {
     const { error, result } = e;
     if (error) {
