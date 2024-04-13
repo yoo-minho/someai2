@@ -7,6 +7,7 @@ import SlackPreview from "./SlackPreview.vue";
 import type { FormSubmitEvent } from "#ui/types";
 
 const baseState = useBase();
+const ogState = useOg();
 const ogNewState = useOg("new");
 const headline = ref("");
 const iframeUrl = computed(() =>
@@ -29,7 +30,24 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
 };
 
 const changeColor = (color: string) => {
-  ogNewState.value.thumbUrl = `http://localhost:3000/theme/${color}.png`;
+  if (color === "none") {
+    ogNewState.value.thumbUrl = ogState.value.thumbUrl;
+  } else {
+    ogNewState.value.thumbUrl = `http://localhost:3000/theme/${color}.png`;
+  }
+};
+
+const bgItems = [
+  { value: "img", label: "ImageUrl" },
+  { value: "color", label: "GradientColor" },
+];
+const bgSelected = ref("img");
+const onBgChange = (index: number) => {
+  const item = bgItems[index];
+  bgSelected.value = item.value;
+  if (item.value === "img") {
+    ogNewState.value.thumbUrl = ogState.value.thumbUrl;
+  }
 };
 </script>
 <template>
@@ -74,16 +92,24 @@ const changeColor = (color: string) => {
           size="lg"
         />
       </UFormGroup>
-      <UFormGroup label="ImageUrl" name="thumbUrl">
+      <UFormGroup label="Background" name="thumbUrl">
+        <UTabs :items="bgItems" :default-index="0" @change="onBgChange" />
         <UInput
+          v-if="bgSelected === 'img'"
           v-model="ogNewState.thumbUrl"
           placeholder="Enrer thumbUrl"
           size="lg"
         />
-        <BgSelectMenu @change-color="changeColor" />
+        <BgSelectMenu
+          v-if="bgSelected === 'color'"
+          @change-color="changeColor"
+        />
       </UFormGroup>
     </UForm>
   </template>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+* {
+}
+</style>
