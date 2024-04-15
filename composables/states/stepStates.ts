@@ -1,4 +1,4 @@
-import type { OgDataType, BaseType } from "~/types/common";
+import type { BaseType, OgType } from "~/types/common";
 
 export const useBase = () =>
   useState<BaseType>("base", () => ({
@@ -15,4 +15,5 @@ export const useOg = (name = "") =>
     twitterCard: "",
     favicon: "",
     domain: "",
+    name: "",
   }));

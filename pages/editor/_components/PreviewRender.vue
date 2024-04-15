@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useBase, useOg } from "~/composables/states/stepStates";
 import type { AppType } from "~/types/common";
-import KakaoPreview from "./KakaoPreview.vue";
-import FacebookPreview from "./FacebookPreview.vue";
-import SlackPreview from "./SlackPreview.vue";
+import KakaoPreview from "./_preview/KakaoPreview.vue";
+import FacebookPreview from "./_preview/FacebookPreview.vue";
+import SlackPreview from "./_preview/SlackPreview.vue";
 
 const baseState = useBase();
 const ogState = useOg();

@@ -1,4 +1,4 @@
-export type AppType = "KakaoTalk" | "Facebook" | "Slack";
+export type AppType = "KakaoTalk" | "Facebook" | "Slack" | "Twitter";
 export type BaseType = {
   url: string;
   app: AppType;
@@ -9,9 +9,10 @@ export type OgType = {
   title: string;
   desc: string;
   thumbUrl: string;
-  twitterCard: "summary_large_image";
+  twitterCard: "summary_large_image" | "";
   favicon: string;
   domain: string;
+  name: string;
 };
 export type OgDataType = {
   ogUrl: string;

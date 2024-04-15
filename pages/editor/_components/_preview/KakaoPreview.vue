@@ -19,6 +19,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
           type="text/html"
           width="400"
           height="200"
+          class="rounded-t-8px"
           :src="iframeUrl"
           frameborder="0"
         ></iframe>

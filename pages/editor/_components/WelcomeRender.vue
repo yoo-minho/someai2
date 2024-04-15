@@ -3,7 +3,7 @@ import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import { ref } from "vue";
 import { useOg, useBase } from "~/composables/states/stepStates";
-import type { OgDataType } from "~/types/common";
+import type { OgType } from "~/types/common";
 
 const schema = z.object({
   url: z.string().url("Invalid url"),
@@ -18,7 +18,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   previewLoading.value = true;
   const { url } = event.data;
   await new Promise((res) => setTimeout(res, 2000));
-  const { data, error } = await useFetch<OgDataType>("/api/scrap", {
+  const { data, error } = await useFetch<OgType>("/api/scrap", {
     method: "POST",
     body: { url },
   });
@@ -35,7 +35,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 <template>
   <div>
-    <h2 class="text-4xl font-bold text-primary-400 m-3 text-center">murl.cc</h2>
+    <h2 class="text-4xl font-bold text-primary-400 m-3 text-center">
+      uglink.cc
+    </h2>
     <UForm
       class="flex gap-3 text-2xl flex-col"
       :state="baseState"

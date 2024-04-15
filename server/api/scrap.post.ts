@@ -1,6 +1,9 @@
 import ogs from "open-graph-scraper";
 import { parse } from "node-html-parser";
 
+////////////////////////////////////////////////////////////////////////////////-80
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-120
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { url } = body;
@@ -40,14 +43,15 @@ export default defineEventHandler(async (event) => {
       title: ogTitle || twitterTitle,
       desc: ogDescription || twitterDescription,
       thumbUrl: decodeURIComponent(
-        ogImage[0].url || twitterImage[0].url
+        ogImage?.[0].url || twitterImage?.[0].url || ""
       ).replace(
         "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=",
         ""
       ),
       twitterCard,
       favicon,
-      domain: requestUrl.replace(/(https:\/\/|http:\/\/)/, ""),
+      domain: requestUrl?.replace(/(https:\/\/|http:\/\/)/, ""),
+      name: ogSiteName,
     };
 
     console.log({ response });

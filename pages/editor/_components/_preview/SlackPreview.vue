@@ -5,7 +5,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
 </script>
 <template>
   <div
-    class="wrap w-400px border-l-4px border-solid px-12px text-15px leading-22px"
+    class="wrap w-360px border-l-4px border-solid px-12px text-15px leading-22px"
   >
     <div class="flex">
       <img
@@ -15,15 +15,13 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
         height="16"
         class="mr-8px mb-3px object-contain"
       />
-      <span class="font-bold">{{ og.domain }}</span>
+      <span class="font-bolder">{{ og.name }}</span>
     </div>
-    <div class="title font-bold">
-      {{ og.title }}
-    </div>
+    <div class="title font-bold">{{ og.title }}</div>
     <template v-if="og.twitterCard === 'summary_large_image' && og.thumbUrl">
       <div>{{ og.desc }}</div>
       <div
-        class="w-360px h-189px bg-contain bg-no-repeat bg-center mt-5px rounded-8px"
+        class="w-360px h-189px bg-cover bg-no-repeat bg-center mt-5px rounded-8px"
         :style="{
           'background-image': `url(${og.thumbUrl})`,
           'box-shadow': 'inset 0 0 0 1px #0000001a',
@@ -33,8 +31,9 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
           v-if="iframeUrl"
           id="player"
           type="text/html"
-          width="400"
-          height="200"
+          width="360"
+          height="189"
+          class="rounded-8px"
           :src="iframeUrl"
           frameborder="0"
         ></iframe>

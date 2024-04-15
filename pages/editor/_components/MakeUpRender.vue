@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { z } from "zod";
 import { useBase, useOg } from "~/composables/states/stepStates";
-import KakaoPreview from "./KakaoPreview.vue";
-import FacebookPreview from "./FacebookPreview.vue";
-import SlackPreview from "./SlackPreview.vue";
+import KakaoPreview from "./_preview/KakaoPreview.vue";
+import FacebookPreview from "./_preview/FacebookPreview.vue";
+import SlackPreview from "./_preview/SlackPreview.vue";
 import type { FormSubmitEvent } from "#ui/types";
 
 const baseState = useBase();
@@ -14,6 +14,7 @@ const iframeUrl = computed(() =>
   [
     `/makeup?title=${encodeURIComponent(headline.value)}`,
     `thumbUrl=${encodeURIComponent(ogNewState.value.thumbUrl)}`,
+    `app=${baseState.value.app}`,
   ].join("&")
 );
 

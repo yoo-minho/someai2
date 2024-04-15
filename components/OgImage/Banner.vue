@@ -7,7 +7,7 @@ const props = defineProps<{
 const thumbUrl = props.thumbUrl || "/theme/meadow.png";
 </script>
 <template>
-  <div class="w-1200px h-600px flex flex-col">
+  <div class="w-full h-full flex flex-col">
     <img
       v-if="thumbUrl"
       class="absolute w-full h-full"

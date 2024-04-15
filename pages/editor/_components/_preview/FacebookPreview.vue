@@ -18,18 +18,14 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
         id="player"
         type="text/html"
         width="400"
-        height="200"
+        height="210"
         :src="iframeUrl"
         frameborder="0"
       ></iframe>
     </div>
     <div class="px-12px py-10px leading-20px">
-      <div class="domain text-13px">
-        {{ og.domain }}
-      </div>
-      <div class="title text-17px font-[600]">
-        {{ og.title }}
-      </div>
+      <div class="domain text-13px">{{ og.domain }}</div>
+      <div class="title text-17px font-[600]">{{ og.title }}</div>
       <div
         class="desc text-15px font-[400] text-ellipsis overflow-hidden whitespace-nowrap"
       >
