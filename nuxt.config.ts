@@ -17,13 +17,13 @@ export default defineNuxtConfig({
     fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700", "Noto+Sans+KR:900"],
   },
   colorMode: {
+    classSuffix: "",
     preference: "dark",
     fallback: "dark",
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
     componentName: "ColorScheme",
     classPrefix: "",
-    classSuffix: "-mode",
     storageKey: "nuxt-color-mode",
   },
   unocss: {

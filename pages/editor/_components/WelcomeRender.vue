@@ -5,6 +5,10 @@ import { ref } from "vue";
 import { useOg, useBase } from "~/composables/states/stepStates";
 import type { OgType } from "~/types/common";
 
+const colorMode = useColorMode();
+
+console.log(colorMode.preference);
+
 const schema = z.object({
   url: z.string().url("Invalid url"),
 });
