@@ -87,10 +87,12 @@ const onBgChange = (index: number) => {
         />
       </UFormGroup>
       <UFormGroup label="Description" name="desc">
-        <UInput
+        <UTextarea
           v-model="ogNewState.desc"
+          color="white"
+          :row="2"
+          variant="outline"
           placeholder="Enrer New Desc"
-          size="lg"
         />
       </UFormGroup>
       <UFormGroup label="Background" name="thumbUrl">

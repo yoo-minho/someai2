@@ -4,13 +4,10 @@ import type { FormSubmitEvent } from "#ui/types";
 import { ref } from "vue";
 import { useOg, useBase } from "~/composables/states/stepStates";
 import type { OgType } from "~/types/common";
-
-const colorMode = useColorMode();
-
-console.log(colorMode.preference);
+import ColorModePicker from "~/components/ColorModelPicker/ColorModePicker.vue";
 
 const schema = z.object({
-  url: z.string().url("Invalid url"),
+  url: z.string().url(),
 });
 
 type Schema = z.output<typeof schema>;
@@ -38,7 +35,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 }
 </script>
 <template>
-  <div>
+  <div class="m-3">
+    <ColorModePicker />
     <h2 class="text-4xl font-bold text-primary-400 m-3 text-center">
       uglink.cc
     </h2>

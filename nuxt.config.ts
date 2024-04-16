@@ -12,19 +12,12 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
   ],
+  colorMode: {
+    classSuffix: "",
+  },
   ogImage: {
     defaults: { component: "OgImage" },
     fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700", "Noto+Sans+KR:900"],
-  },
-  colorMode: {
-    classSuffix: "",
-    preference: "dark",
-    fallback: "dark",
-    hid: "nuxt-color-mode-script",
-    globalName: "__NUXT_COLOR_MODE__",
-    componentName: "ColorScheme",
-    classPrefix: "",
-    storageKey: "nuxt-color-mode",
   },
   unocss: {
     presets: [
