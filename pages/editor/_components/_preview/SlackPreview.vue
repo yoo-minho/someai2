@@ -47,8 +47,8 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
 
 <style lang="scss" scoped>
 .wrap {
-  border-color: rgb(221, 221, 221);
-  color: rgb(29, 28, 29);
+  border-color: var(--border-color);
+  color: var(--color);
 }
 
 .title {

@@ -5,7 +5,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
 </script>
 <template>
   <div
-    class="w-400px border-1 border-solid bg-white box-content"
+    class="w-400px border-0 bg-white box-content"
     style="border-color: #dadde1"
   >
     <div

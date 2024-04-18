@@ -4,10 +4,10 @@ import type { FormSubmitEvent } from "#ui/types";
 import { ref } from "vue";
 import { useOg, useBase } from "~/composables/states/stepStates";
 import type { OgType } from "~/types/common";
-import ColorModePicker from "~/components/ColorModelPicker/ColorModePicker.vue";
+import LandingHero from "~/components/LandingHero.vue";
 
 const schema = z.object({
-  url: z.string().url(),
+  url: z.string().url("Give Me The URL!"),
 });
 
 type Schema = z.output<typeof schema>;
@@ -35,18 +35,16 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 }
 </script>
 <template>
-  <div class="m-3">
-    <ColorModePicker />
-    <h2 class="text-4xl font-bold text-primary-400 m-3 text-center">
-      uglink.cc
-    </h2>
+  <div>
+    <LandingHero v-if="!ogState.title" />
+    <div v-else>Current Url</div>
     <UForm
-      class="flex gap-3 text-2xl flex-col"
+      class="flex gap-3 text-2xl flex-col items-center"
       :state="baseState"
       :schema="schema"
       @submit="onSubmit"
     >
-      <UFormGroup name="url" class="flex-1 text-2xl">
+      <UFormGroup name="url" class="text-2xl w-full">
         <UInput
           v-model="baseState.url"
           placeholder="Enrer Url"
@@ -57,7 +55,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <UButton
         v-if="ogState.title?.length === 0"
         type="submit"
-        class="text-lg flex justify-center"
+        trailingIcon="i-heroicons-photo"
+        class="text-base flex justify-center w-full font-light"
         :loading="previewLoading"
       >
         Search Preview

@@ -5,7 +5,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
 </script>
 <template>
   <div
-    class="w-400px h-294px border-1px border-solid rounded-8px bg-white box-content"
+    class="w-400px h-294px border-0 rounded-12px bg-white box-content"
     style="border-color: #e5e5e5"
   >
     <template v-if="og.thumbUrl?.length > 0">
