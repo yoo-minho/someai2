@@ -1,12 +1,22 @@
 import ogs from "open-graph-scraper";
 import { parse } from "node-html-parser";
 
-////////////////////////////////////////////////////////////////////////////////-80
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-120
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { url } = body;
+  let { url } = body;
+
+  if (String(url).startsWith('https://blog.naver.com/')){
+    console.log("String(url).replace('https://blog.naver.com/', '')", String(url).replace('https://blog.naver.com/', ''))
+    const params = String(url).replace('https://blog.naver.com/', '').split('/');
+    const blogId = params[0] ?? '';
+    const logNo = params[1] ?? '';
+    const path = Object.entries({blogId, logNo}).filter(([k,v]) => !!v).map(([k,v]) => `${k}=${v}`).join('&');
+    url = `https://blog.naver.com/PostView.naver?${path}`;
+  }
+
+  //https://blog.naver.com/PostView.naver?blogId=ar0717&logNo=223333940871
+
   const userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36";
   try {
