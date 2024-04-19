@@ -9,10 +9,9 @@ import ColorModePicker from "./ColorModelPicker/ColorModePicker.vue";
     <div
       class="mx-auto px-4 max-w-7xl flex items-center justify-between gap-3 h-[--header-height]"
     >
-      <NuxtLink
-        to="/"
+      <div
         class="flex items-end gap-2 font-bold text-xl text-gray-900 dark:text-white"
-        aria-label="Nuxt UI"
+        @click="$router.replace('/')"
       >
         <div class="w-auto h-6">UGLIN</div>
 
@@ -22,7 +21,7 @@ import ColorModePicker from "./ColorModelPicker/ColorModePicker.vue";
           size="xs"
           class="-mb-[2px] rounded font-semibold"
         />
-      </NuxtLink>
+      </div>
       <ColorModePicker />
     </div>
   </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div class="m-3 flex justify-center">
-    <div class="min-w-300px max-w-600px w-full">
+    <div class="min-w-xs max-w-lg w-full">
       <slot />
     </div>
   </div>

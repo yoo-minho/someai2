@@ -55,9 +55,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <UButton
         v-if="ogState.title?.length === 0"
         type="submit"
-        trailingIcon="i-heroicons-photo"
+        leadingIcon="i-heroicons-magnifying-glass"
         class="text-base flex justify-center w-full font-light"
         :loading="previewLoading"
+        loading-icon="i-heroicons-globe-asia-australia"
       >
         Search Preview
       </UButton>
