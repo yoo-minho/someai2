@@ -53,7 +53,7 @@ const onBgChange = (index: number) => {
 </script>
 <template>
   <template v-if="baseState.isMakeUp">
-    <UContainer class="flex justify-center">
+    <div class="w-full">
       <KakaoPreview
         v-if="baseState.app === 'KakaoTalk'"
         :og="ogNewState"
@@ -69,7 +69,7 @@ const onBgChange = (index: number) => {
         :og="ogNewState"
         :iframe-url="iframeUrl"
       />
-    </UContainer>
+    </div>
     <UForm
       :schema="schema"
       :state="{ ...ogNewState, headline }"

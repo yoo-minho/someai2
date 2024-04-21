@@ -37,7 +37,6 @@ body {
   --bg-secondary: #071521;
   --border-color: #0d2538;
 }
-
 body {
   background-color: var(--bg);
   color: var(--color);

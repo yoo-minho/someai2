@@ -35,9 +35,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 }
 </script>
 <template>
-  <div>
-    <LandingHero v-if="!ogState.title" />
-    <div v-else>Current Url</div>
+  <div v-if="!ogState.title">
+    <LandingHero />
     <UForm
       class="flex gap-3 text-2xl flex-col items-center"
       :state="baseState"
