@@ -30,6 +30,8 @@ export default defineEventHandler(async (event) => {
     //   });
     // }
 
+    console.log({result})
+
     const {
       ogUrl,
       ogTitle,
@@ -45,6 +47,8 @@ export default defineEventHandler(async (event) => {
       requestUrl,
     } = result;
 
+    const domain = cutUrlUntilFirstSlash(removeHttpPrefix("" + requestUrl));
+
     const response = {
       url: ogUrl || twitterUrl,
       title: ogTitle || twitterTitle,
@@ -53,12 +57,12 @@ export default defineEventHandler(async (event) => {
         ogImage?.[0].url || twitterImage?.[0].url || ""
       ),
       twitterCard,
-      favicon,
-      domain: cutUrlUntilFirstSlash(removeHttpPrefix("" + requestUrl)),
+      favicon: makeFaviconUrl(domain,""+favicon),
+      domain: domain,
       name: ogSiteName,
     };
 
-    console.log({ response });
+    // console.log({ response });
 
     return response;
   } catch (e: any) {
@@ -88,6 +92,13 @@ function inputConverter(url: string) {
     url = `https://blog.naver.com/PostView.naver?${path}`;
   }
   return url;
+}
+
+function makeFaviconUrl(domain: string, url: string){
+  if(url.startsWith('http')){
+    return url;
+  }
+  return 'https://' + cutUrlUntilFirstSlash(domain) + '/' + url.replace('/', '');
 }
 
 async function imgFormatter(imgUrl: string) {
