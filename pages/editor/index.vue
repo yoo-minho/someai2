@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { useBase } from "~/composables/states/stepStates";
+import { useBase } from "@/composables/states/stepStates";
 
-import WelcomeRender from "./_components/WelcomeRender.vue";
-import PreviewRender from "./_components/PreviewRender.vue";
-import MakeUpRender from "./_components/MakeUpRender.vue";
+import WelcomeRender from "./components/WelcomeRender.vue";
+import PreviewRender from "./components/PreviewRender.vue";
+import StylingRender from "./components/StylingRender.vue";
 
 const baseState = useBase();
 </script>
 <template>
   <div>
-    <component :is="WelcomeRender"></component>
-    <WelcomeRender />
-    <PreviewRender />
-    <MakeUpRender />
-    <StepButton />
+    <WelcomeRender v-if="baseState.step === 'Welcome'" />
+    <PreviewRender v-if="baseState.step === 'Preview'" />
+    <StylingRender v-if="baseState.step === 'Styling'" />
   </div>
 </template>

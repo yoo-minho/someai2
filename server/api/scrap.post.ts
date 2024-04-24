@@ -1,4 +1,5 @@
 import ogs from "open-graph-scraper";
+import fs from "node:fs";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -108,9 +109,8 @@ async function imgFormatter(imgUrl: string) {
   const response = await fetch(_imgUrl);
   const buffer = await response.arrayBuffer();
   const dataBuffer = Buffer.from(buffer);
-  const base64Data = dataBuffer.toString("base64");
-  const dataUrl = `data:image/png;base64,${base64Data}`;
-  return dataUrl;
+  fs.writeFileSync('./downloads/xxx.png', dataBuffer);
+  return '/image/xxx.png';
 }
 
 function cutUrlUntilFirstSlash(url: string) {

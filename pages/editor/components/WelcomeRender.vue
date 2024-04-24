@@ -24,6 +24,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     body: { url },
   });
   previewLoading.value = false;
+  baseState.value.step = 'Preview';
 
   if (error.value) {
     const toast = useToast();
@@ -35,30 +36,15 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 }
 </script>
 <template>
-  <div v-if="!ogState.title">
+  <div>
     <LandingHero />
-    <UForm
-      class="flex gap-3 text-2xl flex-col items-center"
-      :state="baseState"
-      :schema="schema"
-      @submit="onSubmit"
-    >
+    <UForm class="flex gap-3 text-2xl flex-col items-center" :state="baseState" :schema="schema" @submit="onSubmit">
       <UFormGroup name="url" class="text-2xl w-full">
-        <UInput
-          v-model="baseState.url"
-          placeholder="Enrer Url"
-          size="lg"
-          :disabled="ogState.title?.length > 0"
-        />
+        <UInput v-model="baseState.url" placeholder="Enrer Url" size="lg" />
       </UFormGroup>
-      <UButton
-        v-if="ogState.title?.length === 0"
-        type="submit"
-        leadingIcon="i-heroicons-magnifying-glass"
-        class="text-base flex justify-center w-full font-light"
-        :loading="previewLoading"
-        loading-icon="i-heroicons-globe-asia-australia"
-      >
+      <UButton v-if="ogState.title?.length === 0" type="submit" leadingIcon="i-heroicons-magnifying-glass"
+        class="text-base flex justify-center w-full font-light" :loading="previewLoading"
+        loading-icon="i-heroicons-globe-asia-australia">
         Search Preview
       </UButton>
     </UForm>
