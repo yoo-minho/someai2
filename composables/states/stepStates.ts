@@ -3,6 +3,7 @@ import type { BaseType, OgType } from "~/types/common";
 export const useBase = () =>
   useState<BaseType>("base", () => ({
     url: "",
+    step: "Welcome",
     app: "KakaoTalk",
     isMakeUp: false,
   }));

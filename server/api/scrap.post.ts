@@ -1,6 +1,4 @@
 import ogs from "open-graph-scraper";
-import { parse } from "node-html-parser";
-import { readFileSync } from "node:fs";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);

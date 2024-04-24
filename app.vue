@@ -1,15 +1,9 @@
 <template>
-  <NuxtLoadingIndicator />
-
-  <Header />
-
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 
   <UNotifications class="max-w-400px p-6" />
-
-  <UContainer class="max-w-400px"> </UContainer>
 </template>
 
 <style>
@@ -29,6 +23,7 @@ body {
   --border-color: #ddd;
   --header-height: 4rem;
 }
+
 .dark {
   --color: #ebf4f1;
   --color-primary: #41b38a;
@@ -37,6 +32,7 @@ body {
   --bg-secondary: #071521;
   --border-color: #0d2538;
 }
+
 body {
   background-color: var(--bg);
   color: var(--color);
