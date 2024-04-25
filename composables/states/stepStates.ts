@@ -13,6 +13,7 @@ export const useOg = (name = "") =>
     title: "",
     desc: "",
     thumbUrl: "",
+    newThumbUrl: "",
     twitterCard: "",
     favicon: "",
     domain: "",

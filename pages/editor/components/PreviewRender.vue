@@ -13,6 +13,7 @@ const rewriteUrl = () => {
     title: "",
     desc: "",
     thumbUrl: "",
+    newThumbUrl: "",
     twitterCard: "",
     favicon: "",
     domain: "",

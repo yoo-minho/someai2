@@ -28,9 +28,11 @@ const clickApp = (appId: AppType) => {
         </div>
         <div
             class="con w-full flex item-center gap-1 border border-gray-200 dark:border-gray-700 rounded-b-md overflow-hidden">
-            <KakaoPreview v-if="baseState.app === 'KakaoTalk'" :og="og" :iframe-url="iframeUrl" />
-            <FacebookPreview v-if="baseState.app === 'Facebook'" :og="og" :iframe-url="iframeUrl" />
-            <SlackPreview v-if="baseState.app === 'Slack'" :og="og" :iframe-url="iframeUrl" />
+            <KakaoPreview v-if="baseState.app === 'KakaoTalk'" :og="og" :iframe-url="iframeUrl"
+                :step="baseState.step" />
+            <FacebookPreview v-if="baseState.app === 'Facebook'" :og="og" :iframe-url="iframeUrl"
+                :step="baseState.step" />
+            <SlackPreview v-if="baseState.app === 'Slack'" :og="og" :iframe-url="iframeUrl" :step="baseState.step" />
         </div>
     </div>
 </template>

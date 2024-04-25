@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
 
-defineProps<{ og: OgType; iframeUrl?: string }>();
+defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
 </script>
 <template>
   <div class="flex w-full p-3 gap-2" style="overflow-x: auto; background: var(--slack-bg);">

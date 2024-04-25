@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
 
-defineProps<{ og: OgType; iframeUrl?: string }>();
+defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
 </script>
 <template>
   <div class="flex w-full justify-center" style="overflow-x: auto">
@@ -20,56 +20,29 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
           {{ og.url }}
         </div>
       </div>
-      <div
-        class="w-[400px] border-0 bg-white box-content"
-        style="border-color: #dadde1"
-      >
-        <div
-          v-if="og.thumbUrl?.length > 0"
-          class="w-full aspect-[1.91/1] bg-cover bg-no-repeat bg-center"
-          :style="{ 'background-image': `url(${og.thumbUrl})` }"
-        >
-          <iframe
-            v-if="iframeUrl"
-            id="player"
-            type="text/html"
-            width="400"
-            height="210"
-            :src="iframeUrl"
-            frameborder="0"
-          ></iframe>
+      <div class="w-[400px] border-0 bg-white box-content" style="border-color: #dadde1">
+        <div v-if="og.thumbUrl?.length > 0" class="w-full aspect-[1.91/1] bg-cover bg-no-repeat bg-center"
+          :style="{ 'background-image': `url(${og.thumbUrl})` }">
+          <iframe v-if="iframeUrl" id="player" type="text/html" width="400" height="210" :src="iframeUrl"
+            frameborder="0"></iframe>
         </div>
         <div class="px-3 py-2 leading-4 fb-content">
           <div class="domain text-[13px]">{{ og.domain }}</div>
           <div class="title text-[17px] font-[600]">{{ og.title }}</div>
-          <div
-            class="desc text-[15px] font-[400] text-ellipsis overflow-hidden whitespace-nowrap"
-          >
+          <div class="desc text-[15px] font-[400] text-ellipsis overflow-hidden whitespace-nowrap">
             {{ og.desc }}
           </div>
         </div>
       </div>
       <div class="p-2 facebook-bottom">
         <div class="flex">
-          <i
-            data-visualcompletion="css-img"
-            class="x1b0d499 x1d69dk1"
-            style="background-position: 0px -760px"
-          ></i>
+          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -760px"></i>
         </div>
         <div>
-          <i
-            data-visualcompletion="css-img"
-            class="x1b0d499 x1d69dk1"
-            style="background-position: 0px -571px"
-          ></i>
+          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -571px"></i>
         </div>
         <div>
-          <i
-            data-visualcompletion="css-img"
-            class="x1b0d499 x1d69dk1"
-            style="background-position: 0px -907px"
-          ></i>
+          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -907px"></i>
         </div>
       </div>
     </div>
@@ -82,6 +55,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
   --color-fb: rgb(101, 103, 107);
   --url-fb: rgb(0, 100, 209);
 }
+
 .dark {
   --bg-fb: rgb(36, 37, 38);
   --bg-fb-content: #3a3b3c;
@@ -93,27 +67,33 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
 .wrap {
   background-color: var(--bg-fb);
 }
+
 .fb-content {
   background-color: var(--bg-fb-content);
 }
+
 .url {
   color: var(--url-fb);
 }
+
 .title {
   color: var(--color);
 }
+
 .domain {
   color: var(--color-fb);
   text-transform: uppercase;
 }
+
 .desc {
   color: var(--color-fb);
 }
+
 .facebook-bottom {
   display: flex;
   font-weight: 600;
 
-  & > div {
+  &>div {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -126,8 +106,7 @@ defineProps<{ og: OgType; iframeUrl?: string }>();
     background-position: 0px -760px;
     width: 20px;
     height: 20px;
-    filter: invert(39%) sepia(21%) saturate(200%) saturate(109.5%)
-      hue-rotate(174deg) brightness(94%) contrast(86%);
+    filter: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
   }
 }
 </style>

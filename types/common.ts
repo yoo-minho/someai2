@@ -11,22 +11,9 @@ export type OgType = {
   title: string;
   desc: string;
   thumbUrl: string;
+  newThumbUrl: string;
   twitterCard: "summary_large_image" | "";
   favicon: string;
   domain: string;
   name: string;
-};
-export type OgDataType = {
-  ogUrl: string;
-  ogTitle: string;
-  ogDescription: string;
-  twitterCard: string;
-  twitterUrl: string;
-  twitterTitle: string;
-  twitterDescription: string;
-  ogSiteName: string;
-  ogImage: [{ url: string }];
-  twitterImage: [{ url: string }];
-  favicon: string;
-  requestUrl: string;
 };

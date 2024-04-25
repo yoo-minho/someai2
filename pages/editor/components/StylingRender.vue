@@ -8,13 +8,6 @@ const baseState = useBase();
 const ogState = useOg();
 const ogNewState = useOg("new");
 const headline = ref("");
-const iframeUrl = computed(() =>
-  [
-    `/makeup?title=${encodeURIComponent(headline.value)}`,
-    `thumbUrl=${encodeURIComponent(ogNewState.value.thumbUrl)}`,
-    `app=${baseState.value.app}`,
-  ].join("&")
-);
 
 const schema = z.object({
   headline: z.string(),
@@ -36,6 +29,15 @@ const changeColor = (color: string) => {
   }
 };
 
+watch([() => headline.value, () => ogNewState.value.thumbUrl], () => {
+  const query = {
+    title: headline.value,
+    thumbUrl: ogNewState.value.thumbUrl,
+    app: baseState.value.app
+  }
+  ogNewState.value.newThumbUrl = `/__og-image__/image/makeup/og.png?_query={${encodeURIComponent(JSON.stringify(query).replace(/\{|\}/g, ''))}}`;
+})
+
 const bgItems = [
   { value: "img", label: "ImageUrl" },
   { value: "color", label: "GradientColor" },
@@ -50,7 +52,7 @@ const onBgChange = (index: number) => {
 };
 </script>
 <template>
-  <PreviewSelector :og="ogNewState" :iframe-url="iframeUrl" />
+  <PreviewSelector :og="ogNewState" />
   <UForm :schema="schema" :state="{ ...ogNewState, headline }" class="text-2xl mt-3 flex-col flex gap-3"
     @submit="onSubmit">
     <UFormGroup label="Headline" name="headline">
