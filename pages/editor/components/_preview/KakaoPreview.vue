@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
-
-defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
+defineProps<{ og: OgType }>();
 </script>
 <template>
   <div class="flex w-full p-3 gap-3" style="background-color: #9bbbd4; overflow-x: auto">
@@ -16,9 +15,7 @@ defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
       <div class="w-[400px] rounded-[8px]">
         <template v-if="og.thumbUrl?.length > 0">
           <div class="w-full h-[200px] bg-cover bg-no-repeat bg-center rounded-t-[8px]"
-            :style="{ 'background-image': `url(${step === 'Styling' ? og.newThumbUrl : og.thumbUrl})` }">
-            <iframe v-if="iframeUrl" id="player" type="text/html" width="400" height="200" class="rounded-t-[8px]"
-              :src="iframeUrl" frameborder="0"></iframe>
+            :style="{ 'background-image': `url(${og.newThumbUrl}), url(${og.thumbUrl})` }">
           </div>
         </template>
         <div class="px-3 py-2 tracking-[-.2px] leading-[24px] bg-white rounded-b-[8px]">

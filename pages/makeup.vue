@@ -30,3 +30,6 @@ defineOgImageComponent(
   }
 );
 </script>
+<template>
+  <div></div>
+</template>

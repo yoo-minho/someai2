@@ -1,5 +1,5 @@
 export type AppType = "KakaoTalk" | "Facebook" | "Slack" | "Twitter";
-export type StepType = "Welcome" | "Preview" | "Styling";
+export type StepType = "Welcome" | "Preview" | "Styling" | "Submit";
 export type BaseType = {
   url: string;
   step: StepType;

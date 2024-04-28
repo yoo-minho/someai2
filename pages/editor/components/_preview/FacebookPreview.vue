@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
 
-defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
+defineProps<{ og: OgType }>();
 </script>
 <template>
   <div class="flex w-full justify-center" style="overflow-x: auto">
@@ -22,9 +22,7 @@ defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
       </div>
       <div class="w-[400px] border-0 bg-white box-content" style="border-color: #dadde1">
         <div v-if="og.thumbUrl?.length > 0" class="w-full aspect-[1.91/1] bg-cover bg-no-repeat bg-center"
-          :style="{ 'background-image': `url(${og.thumbUrl})` }">
-          <iframe v-if="iframeUrl" id="player" type="text/html" width="400" height="210" :src="iframeUrl"
-            frameborder="0"></iframe>
+          :style="{ 'background-image': `url(${og.newThumbUrl}), url(${og.thumbUrl})` }">
         </div>
         <div class="px-3 py-2 leading-4 fb-content">
           <div class="domain text-[13px]">{{ og.domain }}</div>

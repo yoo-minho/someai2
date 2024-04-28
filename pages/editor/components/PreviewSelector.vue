@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { useBase, useOg } from "@/composables/states/stepStates";
+import { useBase } from "@/composables/states/stepStates";
 import type { AppType } from "@/types/common";
 import KakaoPreview from "./_preview/KakaoPreview.vue";
 import FacebookPreview from "./_preview/FacebookPreview.vue";
 import SlackPreview from "./_preview/SlackPreview.vue";
 
-defineProps<{ og: any, iframeUrl?: string }>();
+defineProps<{ og: any }>();
 
 const baseState = useBase();
-
 const clickApp = (appId: AppType) => {
     baseState.value.app = appId;
 };
@@ -28,11 +27,9 @@ const clickApp = (appId: AppType) => {
         </div>
         <div
             class="con w-full flex item-center gap-1 border border-gray-200 dark:border-gray-700 rounded-b-md overflow-hidden">
-            <KakaoPreview v-if="baseState.app === 'KakaoTalk'" :og="og" :iframe-url="iframeUrl"
-                :step="baseState.step" />
-            <FacebookPreview v-if="baseState.app === 'Facebook'" :og="og" :iframe-url="iframeUrl"
-                :step="baseState.step" />
-            <SlackPreview v-if="baseState.app === 'Slack'" :og="og" :iframe-url="iframeUrl" :step="baseState.step" />
+            <KakaoPreview v-if="baseState.app === 'KakaoTalk'" :og="og" />
+            <FacebookPreview v-if="baseState.app === 'Facebook'" :og="og" />
+            <SlackPreview v-if="baseState.app === 'Slack'" :og="og" />
         </div>
     </div>
 </template>

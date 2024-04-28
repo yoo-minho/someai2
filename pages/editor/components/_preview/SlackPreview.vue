@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
-
-defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
+defineProps<{ og: OgType }>();
 </script>
 <template>
   <div class="flex w-full p-3 gap-2" style="overflow-x: auto; background: var(--slack-bg);">
@@ -24,9 +23,7 @@ defineProps<{ og: OgType; iframeUrl?: string; step: string }>();
         <template v-if="og.twitterCard === 'summary_large_image' && og.thumbUrl">
           <div>{{ og.desc }}</div>
           <div class="w-[360px] h-[189px] bg-cover bg-no-repeat bg-center mt-5px rounded-[8px]"
-            :style="{ 'background-image': `url(${og.thumbUrl})` }">
-            <iframe v-if="iframeUrl" id="player" type="text/html" width="360" height="189" class="rounded-8px"
-              :src="iframeUrl" frameborder="0"></iframe>
+            :style="{ 'background-image': `url(${og.newThumbUrl}), url(${og.thumbUrl})` }">
           </div>
         </template>
         <template v-else>

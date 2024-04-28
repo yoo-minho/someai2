@@ -42,7 +42,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <UFormGroup name="url" class="text-2xl w-full">
         <UInput v-model="baseState.url" placeholder="Enrer Url" size="lg" />
       </UFormGroup>
-      <UButton v-if="ogState.title?.length === 0" type="submit" leadingIcon="i-heroicons-magnifying-glass"
+      <UButton type="submit" leadingIcon="i-heroicons-magnifying-glass"
         class="text-base flex justify-center w-full font-light" :loading="previewLoading"
         loading-icon="i-heroicons-globe-asia-australia">
         Search Preview

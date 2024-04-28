@@ -6,14 +6,14 @@ import PreviewSelector from "./PreviewSelector.vue";
 
 const baseState = useBase();
 const ogState = useOg();
+const headline = ref("No Title");
 const ogNewState = useOg("new");
-const headline = ref("");
 
 const schema = z.object({
   headline: z.string(),
   title: z.string(),
   desc: z.string(),
-  thumbUrl: z.string().url("Invalid URL"),
+  thumbUrl: z.string(),
 });
 type Schema = z.output<typeof schema>;
 
@@ -36,7 +36,7 @@ watch([() => headline.value, () => ogNewState.value.thumbUrl], () => {
     app: baseState.value.app
   }
   ogNewState.value.newThumbUrl = `/__og-image__/image/makeup/og.png?_query={${encodeURIComponent(JSON.stringify(query).replace(/\{|\}/g, ''))}}`;
-})
+}, { immediate: true })
 
 const bgItems = [
   { value: "img", label: "ImageUrl" },
