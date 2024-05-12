@@ -1,7 +1,30 @@
 <script setup lang="ts">
-import { useOg } from "~/composables/states/stepStates";
+import { useBase, useOg } from "~/composables/states/stepStates";
 import PreviewSelector from "./PreviewSelector.vue";
+
+const baseState = useBase();
 const ogState = useOg();
+const ogNewState = useOg("new");
+
+const moverWriteUrl = () => {
+  baseState.value.step = "Welcome";
+  ogState.value = {
+    url: "",
+    title: "",
+    desc: "",
+    thumbUrl: "",
+    newThumbUrl: "",
+    twitterCard: "",
+    favicon: "",
+    domain: "",
+    siteName: "",
+  };
+};
+
+const moveStylingUrl = () => {
+  baseState.value.step = "Styling";
+  ogNewState.value = { ...ogState.value };
+};
 </script>
 <template>
   <div v-if="ogState.title === ''" class="mt-3">
@@ -9,6 +32,22 @@ const ogState = useOg();
   </div>
   <div v-else>
     <PreviewSelector :og="ogState" />
+  </div>
+  <div class="flex justify-center gap-3 mt-3">
+    <UButton
+      class="flex-1"
+      leadingIcon="i-heroicons-arrow-small-left-solid"
+      @click="moverWriteUrl()"
+    >
+      Write Url
+    </UButton>
+    <UButton
+      class="flex-1 justify-end"
+      trailingIcon="i-heroicons-arrow-small-right-solid"
+      @click="moveStylingUrl()"
+    >
+      Styling Preview
+    </UButton>
   </div>
 </template>
 

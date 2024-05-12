@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model LinkInfo {
+  path   String       @id @db.Text
+  url    String        @db.Text
+  title    String        @db.Text
+  desc      String           @db.Text
+  thumbUrl  String       @db.Text
+  twitterCard   String       @db.Text
+  favicon   String      @db.Text
+  domain      String      @db.Text
+  siteName      String       @db.Text
+}

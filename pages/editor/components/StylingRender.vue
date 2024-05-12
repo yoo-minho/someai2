@@ -29,14 +29,20 @@ const changeColor = (color: string) => {
   }
 };
 
-watch([() => headline.value, () => ogNewState.value.thumbUrl], () => {
-  const query = {
-    title: headline.value,
-    thumbUrl: ogNewState.value.thumbUrl,
-    app: baseState.value.app
-  }
-  ogNewState.value.newThumbUrl = `/__og-image__/image/makeup/og.png?_query={${encodeURIComponent(JSON.stringify(query).replace(/\{|\}/g, ''))}}`;
-}, { immediate: true })
+watch(
+  [() => headline.value, () => ogNewState.value.thumbUrl],
+  () => {
+    const query = {
+      title: headline.value,
+      thumbUrl: ogNewState.value.thumbUrl,
+      app: baseState.value.app,
+    };
+    ogNewState.value.newThumbUrl = `/__og-image__/image/makeup/og.png?_query={${encodeURIComponent(
+      JSON.stringify(query).replace(/\{|\}/g, "")
+    )}}`;
+  },
+  { immediate: true }
+);
 
 const bgItems = [
   { value: "img", label: "ImageUrl" },
@@ -50,28 +56,72 @@ const onBgChange = (index: number) => {
     ogNewState.value.thumbUrl = ogState.value.thumbUrl;
   }
 };
+
+const moveConfirmPreview = () => {
+  baseState.value.step = "Preview";
+};
+
+const moveSubmit = () => {
+  baseState.value.step = "Submit";
+};
 </script>
 <template>
   <PreviewSelector :og="ogNewState" />
-  <UForm :schema="schema" :state="{ ...ogNewState, headline }" class="text-2xl mt-3 flex-col flex gap-3"
-    @submit="onSubmit">
+  <UForm
+    :schema="schema"
+    :state="{ ...ogNewState, headline }"
+    class="text-2xl mt-3 flex-col flex gap-3"
+    @submit="onSubmit"
+  >
     <UFormGroup label="Headline" name="headline">
       <UInput v-model="headline" placeholder="Enrer Headline" size="lg" />
     </UFormGroup>
     <UFormGroup label="Title" name="title">
-      <UInput v-model="ogNewState.title" placeholder="Enrer New Title" size="lg" />
+      <UInput
+        v-model="ogNewState.title"
+        placeholder="Enrer New Title"
+        size="lg"
+      />
     </UFormGroup>
     <UFormGroup label="Description" name="desc">
-      <UTextarea v-model="ogNewState.desc" color="white" :row="2" variant="outline" placeholder="Enrer New Desc" />
+      <UTextarea
+        v-model="ogNewState.desc"
+        color="white"
+        :row="2"
+        variant="outline"
+        placeholder="Enrer New Desc"
+      />
     </UFormGroup>
     <UFormGroup label="Background" name="thumbUrl">
       <UTabs :items="bgItems" :default-index="0" @change="onBgChange" />
-      <UInput v-if="bgSelected === 'img'" v-model="ogNewState.thumbUrl" placeholder="Enrer thumbUrl" size="lg" />
+      <UInput
+        v-if="bgSelected === 'img'"
+        v-model="ogNewState.thumbUrl"
+        placeholder="Enrer thumbUrl"
+        size="lg"
+      />
       <BgSelectMenu v-if="bgSelected === 'color'" @change-color="changeColor" />
     </UFormGroup>
   </UForm>
+  <div class="flex justify-center gap-3 mt-3">
+    <UButton
+      class="flex-1"
+      leadingIcon="i-heroicons-arrow-small-left-solid"
+      @click="moveConfirmPreview()"
+    >
+      Confirm Preview
+    </UButton>
+    <UButton
+      class="flex-1 justify-end"
+      trailingIcon="i-heroicons-arrow-small-right-solid"
+      @click="moveSubmit()"
+    >
+      Sumbit New Preview
+    </UButton>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-* {}
+* {
+}
 </style>

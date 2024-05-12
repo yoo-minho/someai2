@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     //   });
     // }
 
-    console.log({result})
+    console.log({ result });
 
     const {
       ogUrl,
@@ -56,9 +56,9 @@ export default defineEventHandler(async (event) => {
         ogImage?.[0].url || twitterImage?.[0].url || ""
       ),
       twitterCard,
-      favicon: makeFaviconUrl(domain,""+favicon),
+      favicon: makeFaviconUrl(domain, "" + favicon),
       domain: domain,
-      name: ogSiteName,
+      siteName: ogSiteName,
     };
 
     // console.log({ response });
@@ -93,11 +93,13 @@ function inputConverter(url: string) {
   return url;
 }
 
-function makeFaviconUrl(domain: string, url: string){
-  if(url.startsWith('http')){
+function makeFaviconUrl(domain: string, url: string) {
+  if (url.startsWith("http")) {
     return url;
   }
-  return 'https://' + cutUrlUntilFirstSlash(domain) + '/' + url.replace('/', '');
+  return (
+    "https://" + cutUrlUntilFirstSlash(domain) + "/" + url.replace("/", "")
+  );
 }
 
 async function imgFormatter(imgUrl: string) {
@@ -109,8 +111,8 @@ async function imgFormatter(imgUrl: string) {
   const response = await fetch(_imgUrl);
   const buffer = await response.arrayBuffer();
   const dataBuffer = Buffer.from(buffer);
-  fs.writeFileSync('./downloads/xxx.png', dataBuffer);
-  return '/image/xxx.png';
+  fs.writeFileSync("./downloads/xxx.png", dataBuffer);
+  return "/image/xxx.png";
 }
 
 function cutUrlUntilFirstSlash(url: string) {

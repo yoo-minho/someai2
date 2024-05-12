@@ -15,5 +15,5 @@ export type OgType = {
   twitterCard: "summary_large_image" | "";
   favicon: string;
   domain: string;
-  name: string;
+  siteName: string;
 };
