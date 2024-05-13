@@ -3,9 +3,17 @@ import type { OgType } from "~/types/common";
 defineProps<{ og: OgType }>();
 </script>
 <template>
-  <div class="flex w-full p-3 gap-2" style="overflow-x: auto; background: var(--slack-bg);">
+  <div
+    class="flex w-full p-3 gap-2"
+    style="overflow-x: auto; background: var(--slack-bg)"
+  >
     <div>
-      <UAvatar src="./avatar/butter.png" alt="Avatar" size="md" img-class="rounded-lg object-cover" />
+      <UAvatar
+        src="/avatar/butter.png"
+        alt="Avatar"
+        size="md"
+        img-class="rounded-lg object-cover"
+      />
     </div>
     <div>
       <div class="font-bold text-[15px] leading-[22px]">
@@ -14,17 +22,32 @@ defineProps<{ og: OgType }>();
       <div class="url text-[15px] leading-[22px] mb-[4px]">
         {{ og.url }}
       </div>
-      <div class="left-line border-l-4 border-solid px-[12px] text-[15px] leading-[22px] flex flex-col gap-[2px]">
+      <div
+        class="left-line border-l-4 border-solid px-[12px] text-[15px] leading-[22px] flex flex-col gap-[2px]"
+      >
         <div class="flex">
-          <img v-if="og.favicon" :src="og.favicon" width="16" height="16" class="mr-[4px] object-contain" />
-          <span class="font-bold">{{ og.name }}</span>
+          <img
+            v-if="og.favicon"
+            :src="og.favicon"
+            width="16"
+            height="16"
+            class="mr-[4px] object-contain"
+          />
+          <span class="font-bold">{{ og.siteName }}</span>
         </div>
         <div class="url font-bold">{{ og.title }}</div>
-        <template v-if="og.twitterCard === 'summary_large_image' && og.thumbUrl">
+        <template
+          v-if="og.twitterCard === 'summary_large_image' && og.thumbUrl"
+        >
           <div>{{ og.desc }}</div>
-          <div class="w-[360px] h-[189px] bg-cover bg-no-repeat bg-center mt-5px rounded-[8px]"
-            :style="{ 'background-image': `url(${og.newThumbUrl}), url(${og.thumbUrl})` }">
-          </div>
+          <div
+            class="w-[360px] h-[189px] bg-cover bg-no-repeat bg-center mt-5px rounded-[8px]"
+            :style="{
+              'background-image': og.newThumbUrl
+                ? `url(${og.newThumbUrl}), url(${og.thumbUrl})`
+                : `url(${og.thumbUrl})`,
+            }"
+          ></div>
         </template>
         <template v-else>
           <div>{{ og.desc }}</div>

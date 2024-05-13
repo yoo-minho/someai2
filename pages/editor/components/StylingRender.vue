@@ -116,7 +116,7 @@ const moveSubmit = () => {
       trailingIcon="i-heroicons-arrow-small-right-solid"
       @click="moveSubmit()"
     >
-      Sumbit New Preview
+      Submit New Preview
     </UButton>
   </div>
 </template>

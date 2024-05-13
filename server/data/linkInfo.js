@@ -27,3 +27,10 @@ export async function saveLinkInfo(data) {
     },
   });
 }
+
+export async function findLinkInfo(data) {
+  const { path } = data;
+  return await prisma.linkInfo.findUnique({
+    where: { path },
+  });
+}

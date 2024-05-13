@@ -1,4 +1,4 @@
-import { saveLinkInfo } from "../data/linkInfo";
+import { saveLinkInfo } from "../../data/linkInfo";
 import fs from "node:fs";
 
 export default defineEventHandler(async (event) => {
@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const { path, thumbUrl } = body;
   const newThumbUrl = await imgFormatter(path, thumbUrl);
   console.log({ thumbUrl, newThumbUrl });
-  await saveLinkInfo({ ...body, thumbUrl: imgFormatter(path, thumbUrl) });
+  await saveLinkInfo({ ...body, thumbUrl: newThumbUrl });
 });
 
 async function imgFormatter(path: string, thumbUrl: string) {

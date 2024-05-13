@@ -14,7 +14,7 @@ const moverWriteUrl = () => {
     desc: "",
     thumbUrl: "",
     newThumbUrl: "",
-    twitterCard: "",
+    twitterCard: "summary_large_image",
     favicon: "",
     domain: "",
     siteName: "",

@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     //   });
     // }
 
-    console.log({ result });
+    // console.log({ result });
 
     const {
       ogUrl,
@@ -111,7 +111,11 @@ async function imgFormatter(imgUrl: string) {
   const response = await fetch(_imgUrl);
   const buffer = await response.arrayBuffer();
   const dataBuffer = Buffer.from(buffer);
+
+  fs.mkdirSync("./downloads", { recursive: true });
+
   fs.writeFileSync("./downloads/xxx.png", dataBuffer);
+
   return "/image/xxx.png";
 }
 

@@ -8,7 +8,7 @@ defineProps<{ og: OgType }>();
     <div class="wrap rounded-lg drop-shadow-lg m-3">
       <div class="p-3 pb-0">
         <div class="flex gap-2">
-          <UAvatar src="./avatar/mark.jpg" alt="Avatar" size="md" />
+          <UAvatar src="/avatar/mark.jpg" alt="Avatar" size="md" />
           <div>
             <div class="text-base font-bold">Mark Zuckerberg</div>
             <div class="text-sm mt-[-4px]" style="color: rgb(101, 103, 107)">
@@ -20,27 +20,50 @@ defineProps<{ og: OgType }>();
           {{ og.url }}
         </div>
       </div>
-      <div class="w-[400px] border-0 bg-white box-content" style="border-color: #dadde1">
-        <div v-if="og.thumbUrl?.length > 0" class="w-full aspect-[1.91/1] bg-cover bg-no-repeat bg-center"
-          :style="{ 'background-image': `url(${og.newThumbUrl}), url(${og.thumbUrl})` }">
-        </div>
+      <div
+        class="w-[400px] border-0 bg-white box-content"
+        style="border-color: #dadde1"
+      >
+        <div
+          v-if="og.thumbUrl?.length > 0"
+          class="w-full aspect-[1.91/1] bg-cover bg-no-repeat bg-center"
+          :style="{
+            'background-image': og.newThumbUrl
+              ? `url(${og.newThumbUrl}), url(${og.thumbUrl})`
+              : `url(${og.thumbUrl})`,
+          }"
+        ></div>
         <div class="px-3 py-2 leading-4 fb-content">
           <div class="domain text-[13px]">{{ og.domain }}</div>
           <div class="title text-[17px] font-[600]">{{ og.title }}</div>
-          <div class="desc text-[15px] font-[400] text-ellipsis overflow-hidden whitespace-nowrap">
+          <div
+            class="desc text-[15px] font-[400] text-ellipsis overflow-hidden whitespace-nowrap"
+          >
             {{ og.desc }}
           </div>
         </div>
       </div>
       <div class="p-2 facebook-bottom">
         <div class="flex">
-          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -760px"></i>
+          <i
+            data-visualcompletion="css-img"
+            class="x1b0d499 x1d69dk1"
+            style="background-position: 0px -760px"
+          ></i>
         </div>
         <div>
-          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -571px"></i>
+          <i
+            data-visualcompletion="css-img"
+            class="x1b0d499 x1d69dk1"
+            style="background-position: 0px -571px"
+          ></i>
         </div>
         <div>
-          <i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-position: 0px -907px"></i>
+          <i
+            data-visualcompletion="css-img"
+            class="x1b0d499 x1d69dk1"
+            style="background-position: 0px -907px"
+          ></i>
         </div>
       </div>
     </div>
@@ -91,7 +114,7 @@ defineProps<{ og: OgType }>();
   display: flex;
   font-weight: 600;
 
-  &>div {
+  & > div {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -104,7 +127,8 @@ defineProps<{ og: OgType }>();
     background-position: 0px -760px;
     width: 20px;
     height: 20px;
-    filter: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+    filter: invert(39%) sepia(21%) saturate(200%) saturate(109.5%)
+      hue-rotate(174deg) brightness(94%) contrast(86%);
   }
 }
 </style>

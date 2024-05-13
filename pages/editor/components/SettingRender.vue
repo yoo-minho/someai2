@@ -10,7 +10,7 @@ const ogNewState = useOg("new");
 watch(
   urlPath,
   () => {
-    ogNewState.value.url = `https://ugurl.cc/${urlPath.value}`;
+    ogNewState.value.url = `https://uglin.cc/${urlPath.value}`;
   },
   { immediate: true }
 );
@@ -25,13 +25,12 @@ const 퍼블리싱 = async () => {
     method: "POST",
     body: {
       ...ogNewState.value,
-      path: urlPath,
+      path: urlPath.value,
       url: ogState.value.url,
       thumbUrl: ogNewState.value.newThumbUrl,
     },
   });
-
-  useToast().add({ title: "Hello world!" });
+  navigateTo(urlPath.value + "/welcome");
 };
 
 function generateRandomString(length: number) {
@@ -53,8 +52,8 @@ function generateRandomString(length: number) {
 
   <div class="flex justify-center gap-3 mt-3">
     <UButton
-      class="flex-1 justify-end"
-      trailingIcon="i-heroicons-arrow-small-right-solid"
+      class="flex-1"
+      leadingIcon="i-heroicons-arrow-small-left-solid"
       @click="moveStylingUrl()"
     >
       Styling Preview
