@@ -77,46 +77,26 @@ const moveSubmit = () => {
       <UInput v-model="headline" placeholder="Enrer Headline" size="lg" />
     </UFormGroup>
     <UFormGroup label="Title" name="title">
-      <UInput
-        v-model="ogNewState.title"
-        placeholder="Enrer New Title"
-        size="lg"
-      />
+      <UInput v-model="ogNewState.title" placeholder="Enrer New Title" size="lg" />
     </UFormGroup>
     <UFormGroup label="Description" name="desc">
-      <UTextarea
-        v-model="ogNewState.desc"
-        color="white"
-        :row="2"
-        variant="outline"
-        placeholder="Enrer New Desc"
-      />
+      <UTextarea v-model="ogNewState.desc" color="white" :row="2" variant="outline" placeholder="Enrer New Desc" />
     </UFormGroup>
     <UFormGroup label="Background" name="thumbUrl">
       <UTabs :items="bgItems" :default-index="0" @change="onBgChange" />
-      <UInput
-        v-if="bgSelected === 'img'"
-        v-model="ogNewState.thumbUrl"
-        placeholder="Enrer thumbUrl"
-        size="lg"
-      />
+      <UInput v-if="bgSelected === 'img'" v-model="ogNewState.thumbUrl" placeholder="Enrer thumbUrl" size="lg" />
       <BgSelectMenu v-if="bgSelected === 'color'" @change-color="changeColor" />
     </UFormGroup>
   </UForm>
   <div class="flex justify-center gap-3 mt-3">
+    <UButton color="black" leadingIcon="i-heroicons-arrow-small-left-solid" @click="moveConfirmPreview()" />
     <UButton
-      class="flex-1"
-      leadingIcon="i-heroicons-arrow-small-left-solid"
-      @click="moveConfirmPreview()"
-    >
-      Confirm Preview
-    </UButton>
-    <UButton
+      color="black"
       class="flex-1 justify-end"
       trailingIcon="i-heroicons-arrow-small-right-solid"
       @click="moveSubmit()"
     >
-      Submit New Preview
+      Done
     </UButton>
   </div>
 </template>

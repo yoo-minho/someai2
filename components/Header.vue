@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ColorModePicker from "./ColorModelPicker/ColorModePicker.vue";
+import { SITE_NAME } from "@/constants/common";
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import ColorModePicker from "./ColorModelPicker/ColorModePicker.vue";
         class="flex items-end gap-2 font-bold text-xl text-gray-900 dark:text-white"
         @click="$router.replace('/')"
       >
-        <div class="w-auto h-6">uglin</div>
+        <div class="w-auto h-6">{{ SITE_NAME }}</div>
         <UBadge
           label="v0.1.0"
           variant="subtle"

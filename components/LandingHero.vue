@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="py-24">
+  <div class="py-20">
     <div
       class="mx-auto px-4 sm:px-6 lg:px-8 gap-16 sm:gap-y-24 flex flex-col max-w-4xl"
     >
@@ -8,12 +8,11 @@
         <h1
           class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          <span class="text-primary">u</span>p<span class="text-primary">g</span
-          >rade <span class="text-primary">ugl</span>y
-          <span class="text-primary">lin</span>k
+          <span class="text-primary">pre</span>view &
+          <span class="text-primary">pre</span>ttier
         </h1>
         <p class="mt-6 text-lg tracking-tight text-gray-600 dark:text-gray-300">
-          <span> Styling Preview, Shorten URL, Something </span>
+          <span> Styling Preview, Shorten URL And Something </span>
         </p>
       </div>
     </div>

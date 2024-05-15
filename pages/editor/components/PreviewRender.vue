@@ -27,26 +27,19 @@ const moveStylingUrl = () => {
 };
 </script>
 <template>
-  <div v-if="ogState.title === ''" class="mt-3">
-    The preview is empty. Let’s make it quickly!
-  </div>
+  <div v-if="ogState.title === ''" class="mt-3">The preview is empty. Let’s make it quickly!</div>
   <div v-else>
     <PreviewSelector :og="ogState" />
   </div>
   <div class="flex justify-center gap-3 mt-3">
-    <UButton
-      class="flex-1"
-      leadingIcon="i-heroicons-arrow-small-left-solid"
-      @click="moverWriteUrl()"
-    >
-      Write Url
-    </UButton>
+    <UButton leadingIcon="i-heroicons-arrow-small-left-solid" color="black" @click="moverWriteUrl()" />
     <UButton
       class="flex-1 justify-end"
+      color="black"
       trailingIcon="i-heroicons-arrow-small-right-solid"
       @click="moveStylingUrl()"
     >
-      Styling Preview
+      Prettier
     </UButton>
   </div>
 </template>

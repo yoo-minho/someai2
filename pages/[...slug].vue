@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { OgType } from "~/types/common";
 import PreviewSelector from "./editor/components/PreviewSelector.vue";
+import { DOMAIN_URL } from "~/constants/common";
 
 const route = useRoute();
 const path = route.params.slug[0];
@@ -29,7 +30,7 @@ useSeoMeta({
 
   twitterTitle: title,
   twitterDescription: desc,
-  twitterCard,
+  twitterCard: twitterCard as any,
   twitterImage: thumbUrl,
 });
 
@@ -52,7 +53,7 @@ onMounted(async () => {
 <template>
   <div v-if="!lastPath">{{ count }}초 후 {{ url }}링크로 이동합니다.</div>
   <div v-if="lastPath === 'welcome'">달라진 링크를 마음껏 공유하세요!</div>
-  <PreviewSelector :og="{ ...og, url: `https://uglin.cc/${path}` }" />
+  <PreviewSelector :og="{ ...og, url: DOMAIN_URL + path }" />
 </template>
 
 <style lang="scss" scoped></style>

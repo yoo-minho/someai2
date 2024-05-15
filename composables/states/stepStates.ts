@@ -17,5 +17,5 @@ export const useOg = (name = "") =>
     twitterCard: "",
     favicon: "",
     domain: "",
-    name: "",
+    siteName: "",
   }));

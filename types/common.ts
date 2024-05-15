@@ -12,7 +12,7 @@ export type OgType = {
   desc: string;
   thumbUrl: string;
   newThumbUrl: string;
-  twitterCard: "summary" | "summary_large_image" | "app" | "player";
+  twitterCard: string;
   favicon: string;
   domain: string;
   siteName: string;
