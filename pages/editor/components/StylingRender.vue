@@ -64,17 +64,56 @@ const moveConfirmPreview = () => {
 const moveSubmit = () => {
   baseState.value.step = "Submit";
 };
+
+const squareAlign = [
+  'arrow-up-left', 'arrow-up', 'arrow-up-right',
+  'arrow-left', 'arrows-out-cardinal', 'arrow-right',
+  'arrow-down-left', 'arrow-down', 'arrow-down-right'
+]
+
+const currentAlign = ref(squareAlign[4]);
+const setAlign = (align: string) => {
+  currentAlign.value = align;
+}
 </script>
 <template>
   <PreviewSelector :og="ogNewState" />
-  <UForm
-    :schema="schema"
-    :state="{ ...ogNewState, headline }"
-    class="text-2xl mt-3 flex-col flex gap-3"
-    @submit="onSubmit"
-  >
+  <UForm :schema="schema" :state="{ ...ogNewState, headline }" class="text-2xl mt-3 flex-col flex gap-3"
+    @submit="onSubmit">
     <UFormGroup label="Headline" name="headline">
-      <UInput v-model="headline" placeholder="Enrer Headline" size="lg" />
+      <div class="flex">
+        <UInput v-model="headline" placeholder="Enrer Headline" size="lg" class="flex-1" />
+
+        <UPopover>
+          <UButton color="white" size="lg">
+            <span>align</span>
+            <UIcon :name="`i-ph-${currentAlign}`" dynamic />
+          </UButton>
+
+          <template #panel>
+            <div class="p-4">
+              <div class="flex">
+                <template v-for="i in [0, 1, 2]">
+                  <UIcon :name="`i-ph-${squareAlign[i]}`" dynamic @click="setAlign(squareAlign[i])"
+                    :color="currentAlign === squareAlign[i] ? 'green' : ''" />
+                </template>
+              </div>
+              <div class="flex">
+                <template v-for="i in [3, 4, 5]">
+                  <UIcon :name="`i-ph-${squareAlign[i]}`" dynamic
+                    :color="currentAlign === squareAlign[i] ? 'green' : ''" @click="setAlign(squareAlign[i])" />
+                </template>
+              </div>
+              <div class="flex">
+                <template v-for="i in [6, 7, 8]">
+                  <UIcon :name="`i-ph-${squareAlign[i]}`" dynamic @click="setAlign(squareAlign[i])"
+                    :color="currentAlign === squareAlign[i] ? 'green' : ''" />
+                </template>
+              </div>
+            </div>
+          </template>
+        </UPopover>
+      </div>
     </UFormGroup>
     <UFormGroup label="Title" name="title">
       <UInput v-model="ogNewState.title" placeholder="Enrer New Title" size="lg" />
@@ -90,18 +129,13 @@ const moveSubmit = () => {
   </UForm>
   <div class="flex justify-center gap-3 mt-3">
     <UButton color="black" leadingIcon="i-heroicons-arrow-small-left-solid" @click="moveConfirmPreview()" />
-    <UButton
-      color="black"
-      class="flex-1 justify-end"
-      trailingIcon="i-heroicons-arrow-small-right-solid"
-      @click="moveSubmit()"
-    >
+    <UButton color="black" class="flex-1 justify-end" trailingIcon="i-heroicons-arrow-small-right-solid"
+      @click="moveSubmit()">
       Done
     </UButton>
   </div>
 </template>
 
 <style lang="scss" scoped>
-* {
-}
+* {}
 </style>

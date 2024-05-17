@@ -20,20 +20,6 @@ export default defineNuxtConfig({
     defaults: { component: "OgImage" },
     fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700", "Noto+Sans+KR:900"],
   },
-  // unocss: {
-  //   presets: [
-  //     presetUno(),
-  //     presetWebFonts({
-  //       provider: "google",
-  //       fonts: {
-  //         noto: [
-  //           { name: "Noto Sans KR", weights: ["400", "700", "900"] },
-  //           { name: "sans-serif", provider: "none" },
-  //         ],
-  //       },
-  //     }),
-  //   ],
-  // },
   runtimeConfig: {
     hasNuxtIcon: true,
   },
