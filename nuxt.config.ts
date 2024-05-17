@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   ogImage: {
     defaults: { component: "OgImage" },
-    fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:700", "Noto+Sans+KR:900"],
+    fonts: ["Noto+Sans+KR:400", "Noto+Sans+KR:500", "Noto+Sans+KR:700", "Noto+Sans+KR:900"],
   },
   runtimeConfig: {
     hasNuxtIcon: true,

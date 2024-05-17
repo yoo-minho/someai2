@@ -27,11 +27,7 @@ const clickApp = (appId: AppType) => {
           @click="clickApp(appId as AppType)"
         >
           <template #leading>
-            <img
-              :src="`/icon/${appId.toLowerCase()}.png`"
-              width="20px"
-              height="20px"
-            />
+            <img :src="`/icon/${appId.toLowerCase()}.png`" width="20px" height="20px" />
           </template>
         </UButton>
       </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-const { title, thumbUrl, app } = route.query;
+const { title, thumbUrl, app, align } = route.query;
 const _app = String(app);
 
 const { width: appW, height: appH } = {
@@ -12,10 +12,7 @@ const { width: appW, height: appH } = {
 
 const _title = String(title);
 const convertThumbUrl = thumbUrl
-  ? decodeURIComponent(String(thumbUrl)).replace(
-    "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=",
-    ""
-  )
+  ? decodeURIComponent(String(thumbUrl)).replace("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=", "")
   : null;
 
 defineOgImageComponent(
@@ -23,6 +20,7 @@ defineOgImageComponent(
   {
     title: title || "헤드라인!",
     thumbUrl: convertThumbUrl,
+    align,
   },
   {
     width: appW * 3,
